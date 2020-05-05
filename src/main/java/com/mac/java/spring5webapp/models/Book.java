@@ -9,7 +9,8 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    @ManyToOne
+    private Publisher publisher;
     private String title;
     private String isbn;
     @ManyToMany
@@ -31,6 +32,14 @@ public class Book {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 
     public String getTitle() {
@@ -56,6 +65,7 @@ public class Book {
     public void setAuthors(Set<Author> authors) {
         this.authors = authors;
     }
+
 
     @Override
     public boolean equals(Object o) {
